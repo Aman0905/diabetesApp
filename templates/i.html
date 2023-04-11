@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link rel="stylesheet" href="/static/css/stylee.css" />
+  </header>
+
+  <body>
+    <main>
+      <h1 id="title">Diabetes Prediction</h1>
+      <div class="master-div-style">
+        <p id="description">
+          <b>Are you at the risk of Diabetes? Let's check out!</b>
+        </p>
+        <form
+          id="survey-form"
+          action="/"
+          method="POST"
+          name="myForm"
+          on="validateForm()"
+        >
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label"
+                >Do you have high blood pressure?</label
+              >
+            </div>
+            <div class="fields">
+              <select name="HighChol2" id="HighChol2" class="dropdown" required>
+                <option selected disabled hidden value="">
+                  Choose the option.
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label"
+                >Do you have high cholesterol?</label
+              >
+            </div>
+            <div class="fields">
+              <select name="HighChol" id="HighChol" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="BMI" id="BMI-label"> BMI</label>
+            </div>
+            <div class="fields">
+              <input
+                type="number"
+                id="bmi"
+                name="bmi"
+                class="input-field"
+                placeholder="Enter your BMI"
+                step="0.01"
+                required
+                onblur="validBMI()"
+              /><span><small></small></span>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label">Do you smoke?</label>
+            </div>
+            <div class="fields">
+              <select name="smoke" id="smoke" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label"
+                >Did you had any stroke?</label
+              >
+            </div>
+            <div class="fields">
+              <select name="stroke" id="stroke" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label"
+                >Experienced any Heart Disease or Attack previously?</label
+              >
+            </div>
+            <div class="fields">
+              <select
+                name="HeartAttack"
+                id="HeartAttack"
+                class="dropdown"
+                required
+              >
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="number" id="number-label"
+                >Do you exercise regularly?</label
+              >
+            </div>
+            <div class="fields">
+              <select name="phyact" id="phyact" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label"
+                >Are you Alcoholic?</label
+              >
+            </div>
+            <div class="fields">
+              <select name="Alcohol" id="Alcohol" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label">General Health </label>
+            </div>
+            <div class="fields">
+              <select name="Genhlt" id="Genhlt" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="5">Excellent</option>
+                <option value="4">Very good</option>
+                <option value="3">Good</option>
+                <option value="2">Fair</option>
+                <option value="1">Poor</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="number" id="number-label">Mental Health</label>
+            </div>
+            <div class="fields">
+              <input
+                type="number"
+                id="menhlt"
+                name="menhlt"
+                class="input-fields"
+                placeholder="Any Mental sickness in past 30 days?"
+                required
+                onblur="validMtl()"
+              /><span><small></small></span>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="number" id="number-label">Physical Health</label>
+            </div>
+            <div class="fields">
+              <input
+                type="number"
+                id="phyhlt"
+                name="phyhlt"
+                class="input-fields"
+                placeholder="Any physical illness in past 30 days?"
+                required
+                onblur="validPhyl()"
+              /><span><small></small></span>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label"
+                >Any difficulty in walking stair?</label
+              >
+            </div>
+            <div class="fields">
+              <select name="DiffWalk" id="DiffWalk" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="name" id="name-label">Age</label>
+            </div>
+            <div class="fields">
+              <input
+                type="number"
+                id="age"
+                name="age"
+                class="input-field"
+                placeholder="Enter Your Age"
+                required
+                onblur="validAge()"
+              />
+              <span><small></small></span>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label">Education</label>
+            </div>
+            <div class="fields">
+              <select name="education" id="education" class="Dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Never attended school</option>
+                <option value="2">Elementary</option>
+                <option value="3">Some High School</option>
+                <option value="4">High School graduate</option>
+                <option value="5">Some college</option>
+                <option value="6">College graduate</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-rows">
+            <div class="labels">
+              <label for="dropdown" id="dropdown-label">Income</label>
+            </div>
+            <div class="fields">
+              <select name="income" id="income" class="dropdown" required>
+                <option value="" disabled selected hidden>
+                  Choose the option
+                </option>
+                <option value="1">Less than $10,000</option>
+                <option value="2">Less than $15,000</option>
+                <option value="3">Less than $20,000</option>
+                <option value="4">Less than $25,000</option>
+                <option value="5">Less than $35,000</option>
+                <option value="6">Less than $50,000</option>
+                <option value="7">Less than $75,000</option>
+                <option value="8">$75,000 or more</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="button" id="submit" type="submit">Predict</button>
+          <br />
+        </form>
+        <div class="result">
+          <h2>Result:</h2>
+          <b><p>{{result}}</p> </b>
+          <div><p>{{ message }}</p></div>
+        </div>
+      </div>
+    </main>
+    <script type="text/javascript" src="/static/script/demo.js"></script>
+  </body>
+</html>
